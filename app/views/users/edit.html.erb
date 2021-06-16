@@ -1,0 +1,18 @@
+<h1>Profile Setting</h1>
+
+<section class='user-setting-form'>
+  <%= form_with(model: current_user) do |f| %>
+    <%= render 'shared/form_error', object: current_user %>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+    <%= f.label :fullname %>
+    <%= f.text_field :fullname %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :birth_date %>
+    <%= f.date_field :birth_date %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.submit 'save' %>
+  <% end %>
+</section>

@@ -1,1 +1,12 @@
-<h1><%= current_user.email %></h1>
+<section class='user-profile'>
+  <section class='user-avatar'>
+    <% if current_user.avatar.attached? %>
+      <%= image_tag current_user.avatar, style: 'width: 200px;' %>
+    <% end %>
+  </section>
+  <section class='user-details'>
+    <h1><%= current_user.email %></h1>
+    <h1>Username: <%= current_user.username %></h1>
+    <h1>birth_date: <%= current_user.birth_date %></h1>
+  </section>
+</section> 
