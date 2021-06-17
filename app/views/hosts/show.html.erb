@@ -1,0 +1,12 @@
+<section class='host-profile'>
+  <section class='host-avatar'>
+    <% if current_host.avatar.attached? %>
+      <%= image_tag current_host.avatar, style: 'width: 200px;' %>
+    <% end %>
+  </section>
+  <section class='host-details'>
+    <h1><%= current_host.email %></h1>
+    <h1>hostname: <%= current_host.username %></h1>
+    <h1>birth_date: <%= current_host.birth_date %></h1>
+  </section>
+</section> 

@@ -1,0 +1,24 @@
+<section class='navbar'>
+  <button>
+    <%= link_to 'Home', root_path %>
+  </button>
+
+  <% if current_host.present? %>
+    <button>
+      <%= link_to 'Profile', host_path(current_host) %>
+    </button>
+    <button>
+      <%= link_to 'Setting', edit_host_path(current_host) %>
+    </button>
+    <button>
+      <%= link_to 'Logout', destroy_host_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </button>
+  <% else %>
+    <button>
+      <%= link_to 'Sign Up', new_host_registration_path %>
+    </button>
+    <button>
+      <%= link_to 'Login', new_host_session_path %>
+    </button>
+  <% end %>
+</section>
