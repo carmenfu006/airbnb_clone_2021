@@ -3,6 +3,8 @@ class HostsController < ApplicationController
   layout 'platform'
 
   def show
+    @listing = Listing.new
+    @listings = current_host.listings
   end
 
   def edit

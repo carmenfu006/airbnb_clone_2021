@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   layout 'user'
 
   def show
+    @listings = Listing.all
   end
 
   def edit

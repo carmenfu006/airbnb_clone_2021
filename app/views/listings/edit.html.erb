@@ -1,0 +1,14 @@
+<section class='edit-listing-form'>
+  <h1>Edit listing</h1>
+  <%= form_with(model: @listing) do |f| %>
+    <%= f.label :photos %>
+    <%= f.file_field :photos, multiple: true %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.label :price_per_day %>
+    <%= f.text_field :price_per_day %>
+    <%= f.submit 'Update' %>
+  <% end %>
+</section>

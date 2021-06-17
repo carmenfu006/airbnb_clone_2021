@@ -9,4 +9,24 @@
     <h1>Username: <%= current_user.username %></h1>
     <h1>birth_date: <%= current_user.birth_date %></h1>
   </section>
+
+  <section class='all-listings'>
+    <h1>You might be interested</h1>
+      <% if @listings %>
+        <% @listings.each do |listing| %>
+          <section style='border: 1px solid black; margin-bottom: 10px;'>
+            <% if listing.photos.attached? %>
+              <% listing.photos.each do |photo| %>
+                <%= image_tag photo, style: 'width: 200px;' %>
+              <% end %>
+            <% end %>
+            <h6>Title: <%= listing.title %></h6>
+            <h6>Description: <%= listing.description %></h6>
+            <h6>Price Per Day: <%= listing.price_per_day %></h6>
+          </section>
+        <% end %>
+      <% else %>
+        <p>There is no available listing.</p>
+      <% end %>
+  </section>
 </section> 

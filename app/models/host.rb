@@ -5,4 +5,5 @@ class Host < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
+  has_many :listings
 end
