@@ -1,0 +1,25 @@
+<section class='listing-booking-page'>
+  <h1>Book now!</h1>
+  <section style='border: 1px solid black; margin-bottom: 10px;'>
+    <% if @listing.photos.attached? %>
+      <% @listing.photos.each do |photo| %>
+        <%= image_tag photo, style: 'width: 200px;' %>
+      <% end %>
+    <% end %>
+    <h6>Title: <%= @listing.title %></h6>
+    <h6>Description: <%= @listing.description %></h6>
+    <h6>Price Per Day: <%= @listing.price_per_day %></h6>
+  </section>
+
+  <section class='booking-form'>
+    <section style='border: 1px solid blue; margin-bottom: 10px;'>
+      <%= form_with(model: [@listing, @booking]) do |f| %>
+        <%= f.label :check_in_date %>
+        <%= f.date_field :check_in_date %>
+        <%= f.label :check_out_date %>
+        <%= f.date_field :check_out_date %>
+        <%= f.submit 'Confirm' %>
+      <% end %>
+    </section>
+  </section>
+</section>

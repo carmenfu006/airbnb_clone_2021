@@ -10,6 +10,14 @@
     <h1>birth_date: <%= current_user.birth_date %></h1>
   </section>
 
+  <section class='user-bookings'>
+    <h1>Your Bookings</h1>
+    <% current_user.bookings.each do |booking| %>
+      <%= link_to "#{booking.ref_no}", listing_booking_path(booking.listing, booking) %>
+      status: <%= booking.status %>
+    <% end %>
+  </section>
+
   <section class='all-listings'>
     <h1>You might be interested</h1>
       <% if @listings %>
@@ -23,6 +31,9 @@
             <h6>Title: <%= listing.title %></h6>
             <h6>Description: <%= listing.description %></h6>
             <h6>Price Per Day: <%= listing.price_per_day %></h6>
+            <button>
+              <%= link_to 'Booking', listing_path(listing) %>
+            </button>
           </section>
         <% end %>
       <% else %>

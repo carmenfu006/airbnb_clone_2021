@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   devise_for :hosts
 
   resources :users
+  resources :listings, only: [:show] do
+    resources :bookings
+  end
 
   namespace :dashboard do
     root 'dashboard#show'

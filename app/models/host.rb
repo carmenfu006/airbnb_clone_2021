@@ -6,4 +6,5 @@ class Host < ApplicationRecord
 
   has_one_attached :avatar
   has_many :listings
+  has_many :bookings, through: :listings
 end

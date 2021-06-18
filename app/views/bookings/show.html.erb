@@ -1,0 +1,14 @@
+<section class='show-booking'>
+  <h1>Listing Details</h1>
+  <p>Host: <%= @booking.host.username %></p>
+  <p>Destination: <%= @booking.listing.title %></p>
+  <p>Location: <%= @booking.listing.location %></p>
+
+  <h1>Booking Details</h1>
+  <p>Ref_no: <%= @booking.ref_no %></p>
+  <p>Check in: <%= @booking.check_in_date %></p>
+  <p>Check out: <%= @booking.check_out_date %></p>
+  <p>total: <%= @booking.total %></p>
+  <p>status: <%= @booking.status %></p>
+
+</section>
