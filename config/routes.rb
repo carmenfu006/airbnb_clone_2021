@@ -8,10 +8,15 @@ Rails.application.routes.draw do
   devise_for :hosts
 
   resources :users
-  resources :hosts
-  resources :listings do
-    member do
-      delete :delete_photo_attachment
+
+  namespace :dashboard do
+    root 'dashboard#show'
+  
+    resources :hosts, only: [:show, :edit, :update]
+    resources :listings do
+      member do
+        delete :delete_photo_attachment
+      end
     end
   end
 end

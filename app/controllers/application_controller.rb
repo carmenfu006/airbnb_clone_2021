@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     if resource.class == User
       user_path(resource)
     else
-      host_path(resource)
+      dashboard_host_path(resource)
     end
   end
 

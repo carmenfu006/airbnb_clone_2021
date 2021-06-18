@@ -1,6 +1,6 @@
 <section class='edit-listing-form'>
   <h1>Edit listing</h1>
-  <%= form_with(model: @listing) do |f| %>
+  <%= form_with(model: [:dashboard, @listing]) do |f| %>
     <%= f.label :photos %>
     <%= f.file_field :photos, multiple: true %>
     <%= f.label :title %>

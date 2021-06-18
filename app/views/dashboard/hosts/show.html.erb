@@ -12,7 +12,7 @@
 
   <section class='add-new-listing-form'>
     <h1>Add new listing</h1>
-    <%= form_with(model: @listing) do |f| %>
+    <%= form_with(model: [:dashboard, @listing]) do |f| %>
       <%= f.label :photos %>
       <%= f.file_field :photos, multiple: true %>
       <%= f.label :title %>
@@ -35,14 +35,14 @@
             <% if listing.photos.attached? %>
               <% listing.photos.each do |photo| %>
                 <%= image_tag photo, style: 'width: 200px;' %>
-                <%= link_to 'Remove', delete_photo_attachment_listing_url(photo), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Remove', delete_photo_attachment_dashboard_listing_url(photo), method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             <% end %>
             <h6>Title: <%= listing.title %></h6>
             <h6>Description: <%= listing.description %></h6>
             <h6>Price Per Day: <%= listing.price_per_day %></h6>
             <button>
-              <%= link_to 'Edit', edit_listing_path(listing) %>
+              <%= link_to 'Edit', edit_dashboard_listing_path(listing) %>
             </button>
             <p>
               <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&center=#{listing.location}&key=#{Rails.application.credentials[:GOOGLE_MAP_API]}", alt: "Map" %>

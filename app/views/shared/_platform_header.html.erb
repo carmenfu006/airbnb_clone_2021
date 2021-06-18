@@ -3,12 +3,12 @@
     <%= link_to 'Home', root_path %>
   </button>
 
-  <% if current_host.present? %>
+  <% if host_signed_in? %>
     <button>
-      <%= link_to 'Profile', host_path(current_host) %>
+      <%= link_to 'Profile', dashboard_host_path(current_host) %>
     </button>
     <button>
-      <%= link_to 'Setting', edit_host_path(current_host) %>
+      <%= link_to 'Setting', edit_dashboard_host_path(current_host) %>
     </button>
     <button>
       <%= link_to 'Logout', destroy_host_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>

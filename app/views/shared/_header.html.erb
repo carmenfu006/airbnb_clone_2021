@@ -3,7 +3,7 @@
     <%= link_to 'Home', root_path %>
   </button>
 
-  <% if current_user.present? %>
+  <% if user_signed_in? %>
     <button>
       <%= link_to 'Profile', user_path(current_user) %>
     </button>
