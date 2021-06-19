@@ -13,6 +13,7 @@
   <section class='user-bookings'>
     <h1>Your Bookings</h1>
     <% current_user.bookings.each do |booking| %>
+      <br>
       <%= link_to "#{booking.ref_no}", listing_booking_path(booking.listing, booking) %>
       status: <%= booking.status %>
     <% end %>

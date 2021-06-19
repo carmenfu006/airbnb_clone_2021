@@ -25,4 +25,14 @@ class Booking < ApplicationRecord
   def is_pending?
     status == 'pending'
   end
+
+  def is_paid?
+    status == 'paid'
+  end
+
+  def duration
+    days_between = (check_out_date.to_date - check_in_date.to_date).to_i
+    total_days = days_between + 1
+    return total_days
+  end
 end

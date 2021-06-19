@@ -1,7 +1,7 @@
 class BookingsController < UsersController
   def show
     @booking = Booking.find(params[:id])
-    @stripePK = 'pk_test_51IVIRmEjXwEYMjCUE2U0RGz3A2ZcfqH0PIE8vCYkbrRjx5FmmcjNyRA5wj97ziJ66dGnA7FEhMlNMnrSWodhVXRr00T02rU2ny'
+    @stripePK = Rails.application.credentials[Rails.env.to_sym][:STRIPE_PK].to_s
   end
 
   def create

@@ -8,29 +8,32 @@
   <p>Ref_no: <%= @booking.ref_no %></p>
   <p>Check in: <%= @booking.check_in_date %></p>
   <p>Check out: <%= @booking.check_out_date %></p>
+  <p>Day(s): <%= @booking.duration %> days</p>
   <p>total: <%= @booking.total %></p>
   <p>status: <%= @booking.status %></p>
 
   <% if @booking.is_pending? %>
+    <p id='stripePK' hidden><%= @stripePK %></p>
     <section class='stripe-card-element'>
       <div id='card'>
-        <form action="/stripes" method="post" id="payment-form">
-          <div class="form-row">
-            <label for="card-element">
-              Credit or debit card
-            </label>
-            <div id="card-element">
-              <!-- A Stripe Element will be inserted here. -->
-            </div>
-            <input hidden='true' type="text" name='id' value=<%= @booking.id %>>
-            <input hidden='true' type="text" name='amount' value=<%= @booking.total %>>
-            <!-- Used to display Element errors. -->
-            <div id="card-errors" role="alert"></div>
+        <%= form_with url: '/stripes', id: 'payment-form', method: :post do |f|%>
+          <%= f.text_field :id, value: "#{@booking.id}", hidden: true %>
+          <label for="card-element">
+            Credit or debit card
+          </label>
+          <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
           </div>
-        
-          <button>Submit Payment</button>
-        </form>
+          <div id="card-errors" role="alert"></div>
+          <%= f.submit 'Confirm Payment' %>
+        <% end %>
       </div>
     </section>
+  <% end %>
+
+  <% if @booking.is_paid? %>
+    <button>
+      <%= link_to 'View payment details', stripe_path(@booking.charge_id) %>
+    </button>
   <% end %>
 </section>
