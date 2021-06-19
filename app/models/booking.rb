@@ -21,4 +21,8 @@ class Booking < ApplicationRecord
     self.ref_no = randomstring
     self.save
   end
+
+  def is_pending?
+    status == 'pending'
+  end
 end

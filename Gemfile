@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 
 gem 'geocoder', '~> 1.3', '>= 1.3.7'
+
+gem 'stripe'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
+  resources :stripes
+
   namespace :dashboard do
     root 'dashboard#show'
   
