@@ -15,3 +15,13 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import "controllers"
+
+// because the script tag is looking for a global variable so we gonna create one
+// collect all the arguments
+// trigger a custom event when google map is ready to broadcast out to all of the stimulus controller so we can listen to it
+window.initMap = function(...args) {
+  const event = document.createEvent("Events")
+  event.initEvent("google-maps-callbacks", true, true)
+  event.args = args
+  window.dispatchEvent(event)
+}
