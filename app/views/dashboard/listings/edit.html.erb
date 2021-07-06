@@ -1,6 +1,6 @@
 <section class='edit-listing-form'>
   <h1>Edit listing</h1>
-  <%= form_with(model: [:dashboard, @listing]) do |f| %>
+  <%= form_with(model: [:dashboard, @listing], data: { controller: 'location', action: 'google-maps-callback@window->location.initMap' }) do |f| %>
     <%= f.label :photos %>
     <%= f.file_field :photos, multiple: true %>
     <%= f.label :title %>
@@ -10,7 +10,12 @@
     <%= f.label :price_per_day %>
     <%= f.text_field :price_per_day %>
     <%= f.label :location %>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, data: { location_target: 'field' } %>
+    <%= f.text_field :latitude, data: { location_target: 'latitude' } %>
+    <%= f.text_field :longitude, data: { location_target: 'longitude' } %>
     <%= f.submit 'Update' %>
+    <div style='margin-top: 10px;'>
+      <div data-location-target='map' style='height: 400px;'></div>
+    </div>
   <% end %>
 </section>

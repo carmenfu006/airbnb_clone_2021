@@ -11,8 +11,8 @@ export default class extends Controller {
 
   initMap() {
     this.map = new google.maps.Map(this.mapTarget, {
-      center: new google.maps.LatLng(39.5, -98.35),
-      zoom: 4
+      center: new google.maps.LatLng(this.latitudeTarget.value || 39.5, this.longitudeTarget.value || -98.35),
+      zoom: (this.latitudeTarget.value == '' ? 5 : 18)
     })
     
     this.autocomplete = new google.maps.places.Autocomplete(this.fieldTarget)
