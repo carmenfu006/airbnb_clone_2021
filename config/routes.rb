@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :stripes
 
   namespace :dashboard do
-    root 'dashboard#show'
+    # root 'hosts#show'
   
     resources :hosts, only: [:show, :edit, :update]
     resources :listings do

@@ -23,8 +23,8 @@
       <%= f.text_field :price_per_day %>
       <%= f.label :location %>
       <%= f.text_field :location, data: { location_target: 'field' } %>
-      <%= f.text_field :latitude, data: { location_target: 'latitude' } %>
-      <%= f.text_field :longitude, data: { location_target: 'longitude' } %>
+      <%= f.hidden_field :latitude, data: { location_target: 'latitude' } %>
+      <%= f.hidden_field :longitude, data: { location_target: 'longitude' } %>
       <%= f.submit 'Create' %>
       <div style='margin-top: 10px;'>
         <div data-location-target='map' style='height: 400px;'></div>
