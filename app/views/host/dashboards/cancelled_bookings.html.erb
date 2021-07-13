@@ -1,0 +1,10 @@
+<h1>Your Cancelled Bookings</h1>
+
+<% if @cancelled_bookings.any? %>
+  <% @cancelled_bookings.each do |booking| %>
+    <br>
+    <%= booking.ref_no %>
+  <% end %>
+<% else %>
+  <p>No records yet</p>
+<% end %>

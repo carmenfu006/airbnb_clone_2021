@@ -1,12 +1,17 @@
-class Dashboard::ListingsController < DashboardController
+class Host::ListingsController < HostController
+
+  def index
+    @listing = Listing.new
+    @listings = current_host.listings
+  end
 
   def create
     listing = current_host.listings.create(listing_params)
 
     if listing.save
-      redirect_to dashboard_host_path(current_host), notice: 'Listing was successfully created.'
+      redirect_to host_listings_path, notice: 'Listing was successfully created.'
     else
-      redirect_to dashboard_host_path(current_host), notice: 'There was an error. Please try again.'
+      redirect_to host_listings_path, notice: 'There was an error. Please try again.'
     end
   end
 
@@ -19,16 +24,16 @@ class Dashboard::ListingsController < DashboardController
     @listing.update(listing_params)
   
     if @listing.save
-      redirect_to dashboard_host_path(current_host), notice: 'Listing was successfully updated.'
+      redirect_to host_listings_path, notice: 'Listing was successfully updated.'
     else
-      redirect_to dashboard_host_path(current_host), notice: 'There was an error. Please try again.'
+      redirect_to host_listings_path, notice: 'There was an error. Please try again.'
     end
   end
 
   def delete_photo_attachment
     @image = ActiveStorage::Attachment.find(params[:id])
     @image.purge
-    redirect_to dashboard_host_path(current_host), notice: 'Photo was successfully removed.'
+    redirect_to host_listings_path, notice: 'Photo was successfully removed.'
   end
 
   private

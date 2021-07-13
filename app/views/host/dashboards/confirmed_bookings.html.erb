@@ -1,0 +1,10 @@
+<h1>Your Confirmed Bookings</h1>
+
+<% if @confirmed_bookings.any? %>
+  <% @confirmed_bookings.each do |booking| %>
+    <br>
+    <%= booking.ref_no %>
+  <% end %>
+<% else %>
+  <p>No records yet</p>
+<% end %>

@@ -1,0 +1,51 @@
+<section class='add-new-listing-form'>
+  <h1>Create new listing</h1>
+  <%= form_with(model: [:host, @listing], data: { controller: 'location', action: 'google-maps-callback@window->location.initMap' }) do |f| %>
+    <%= f.label :photos %>
+    <%= f.file_field :photos, multiple: true %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.label :price_per_day %>
+    <%= f.text_field :price_per_day %>
+    <%= f.label :location %>
+    <%= f.text_field :location, data: { location_target: 'field' } %>
+    <%= f.hidden_field :latitude, data: { location_target: 'latitude' } %>
+    <%= f.hidden_field :longitude, data: { location_target: 'longitude' } %>
+    <%= f.submit 'Create' %>
+    <div style='margin-top: 10px;'>
+      <div data-location-target='map' style='height: 400px;'></div>
+    </div>
+  <% end %>
+</section>
+
+<section class='all-listings'>
+  <h1>All your listing</h1>
+    <% if @listings %>
+      <% @listings.each do |listing| %>
+        <section style='border: 1px solid black; margin-bottom: 10px;'>
+          <% if listing.photos.attached? %>
+            <% listing.photos.each do |photo| %>
+              <%= image_tag photo, style: 'width: 200px;' %>
+              <%= link_to 'Remove', delete_photo_attachment_host_listing_url(photo), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          <% end %>
+          <h6>Title: <%= listing.title %></h6>
+          <h6>Description: <%= listing.description %></h6>
+          <h6>Price Per Day: <%= listing.price_per_day %></h6>
+          <button>
+            <%= link_to 'Edit', edit_host_listing_path(listing) %>
+          </button>
+          <p>
+            <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&center=#{listing.location}&key=#{Rails.application.credentials[:GOOGLE_MAP_API]}", alt: "Map" %>
+          </p>
+          <p>
+            <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C#{listing.latitude},#{listing.longitude}&key=#{Rails.application.credentials[:GOOGLE_MAP_API]}", alt: "Map" %>
+          </p>
+        </section>
+      <% end %>
+    <% else %>
+      <p>You have not yet created any listing.</p>
+    <% end %>
+</section>

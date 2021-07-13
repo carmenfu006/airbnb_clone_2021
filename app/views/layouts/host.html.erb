@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AirbnbClone</title>
+    <title>Airbnb-Host</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <script src="https://js.stripe.com/v3/"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script async defer data-turbolinks-eval="false" src="https://maps.googleapis.com/maps/api/js?key=<%=Rails.application.credentials[:GOOGLE_MAP_API]%>&libraries=places&callback=initMap"></script>
   </head>
 
   <body>
-    <%= render 'shared/platform_header' %>
+    <%= render 'shared/host_header' %>
     <%= render 'shared/flash' %>
     <%= yield %>
   </body>
