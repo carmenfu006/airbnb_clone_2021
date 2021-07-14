@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
     if resource.class == User
@@ -20,4 +21,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:fullname, :username, :birth_date])
+  # end
+
+  def devise_parameter_sanitizer
+    if resource_class == Host
+      Host::ParameterSanitizer.new(Host, :host, params)
+    else
+      ParameterSanitizer.new(User, :user, params)
+      # super # Use the default one
+    end
+  end
 end
