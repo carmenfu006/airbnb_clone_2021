@@ -9,6 +9,8 @@
     <%= f.text_field :description %>
     <%= f.label :price_per_day %>
     <%= f.text_field :price_per_day %>
+    <%= f.label :available %>
+    <%= f.check_box :available %>
     <%= f.label :location %>
     <%= f.text_field :location, data: { location_target: 'field' } %>
     <%= f.text_field :latitude, data: { location_target: 'latitude' } %>

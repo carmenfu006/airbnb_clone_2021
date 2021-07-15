@@ -38,7 +38,6 @@ class Host::ListingsController < HostController
 
   private
     def listing_params
-      params.require(:listing).permit(:title, :description, :price_per_day, :location, :latitude, :longitude, photos: [])
+      params.require(:listing).permit(:title, :description, :price_per_day, :available, :location, :latitude, :longitude, photos: [])
     end
-
 end

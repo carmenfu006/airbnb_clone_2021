@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   layout 'user'
 
   def show
-    @listings = Listing.all
+    @listings = Listing.is_available
   end
 
   def edit
