@@ -10,10 +10,20 @@ Rails.application.routes.draw do
 
   resources :users
   resources :listings, only: [:show] do
-    resources :bookings
+    resources :bookings do
+      get 'payment_details'
+      get 'success'
+      get 'cancel'
+    end
   end
 
   resources :stripes
+  
+  scope :webhooks, controller: :webhooks do
+    post 'payment-success-callback', to: 'webhooks#payment_success_callback', as: :payment_callback
+  end
+
+  mount StripeEvent::Engine, at: 'webhooks/payment-success-callback'
 
   # Host
   namespace :host do

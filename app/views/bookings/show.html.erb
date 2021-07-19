@@ -13,22 +13,10 @@
   <p>status: <%= @booking.status %></p>
 
   <% if @booking.is_pending? %>
-    <p id='stripePK' hidden><%= @stripePK %></p>
-    <section class='stripe-card-element'>
-      <div id='card'>
-        <%= form_with url: '/stripes', id: 'payment-form', method: :post do |f|%>
-          <%= f.text_field :id, value: "#{@booking.id}", hidden: true %>
-          <label for="card-element">
-            Credit or debit card
-          </label>
-          <div id="card-element">
-            <!-- A Stripe Element will be inserted here. -->
-          </div>
-          <div id="card-errors" role="alert"></div>
-          <%= f.submit 'Confirm Payment' %>
-        <% end %>
-      </div>
-    </section>
+    <%= form_with url: '/stripes', id: 'payment-form', method: :post do |f|%>
+      <%= f.text_field :id, value: "#{@booking.id}", hidden: true %>
+      <%= f.submit 'Confirm Booking' %>
+    <% end %>
   <% end %>
 
   <% if @booking.is_paid? %>

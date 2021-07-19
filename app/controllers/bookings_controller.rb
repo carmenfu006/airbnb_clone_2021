@@ -1,7 +1,6 @@
 class BookingsController < UsersController
   def show
     @booking = Booking.find(params[:id])
-    @stripePK = Rails.application.credentials[Rails.env.to_sym][:STRIPE_PK].to_s
   end
 
   def create
@@ -13,6 +12,19 @@ class BookingsController < UsersController
     else
       redirect_to listing_path(listing), alert: 'There was an error. Please try again.'
     end
+  end
+
+  def payment_details
+    @listing = Listing.find(params[:listing_id])
+    @booking = Booking.find(params[:booking_id])
+  end
+
+  def success
+    @listing = Listing.find(params[:listing_id])
+    @booking = Booking.find(params[:booking_id])
+  end
+
+  def cancel
   end
 
   private
