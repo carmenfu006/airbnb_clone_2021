@@ -17,6 +17,13 @@ class BookingsController < UsersController
   def payment_details
     @listing = Listing.find(params[:listing_id])
     @booking = Booking.find(params[:booking_id])
+
+    Stripe.api_key = Rails.application.credentials[Rails.env.to_sym][:STRIPE_SK].to_s
+
+    @payment = Stripe::PaymentIntent.retrieve(
+                @booking.charge_id,
+              )
+    @charges = @payment['charges']['data'][0]
   end
 
   def success

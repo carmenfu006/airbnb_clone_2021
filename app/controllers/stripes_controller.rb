@@ -15,8 +15,9 @@ class StripesController < UsersController
                     unit_amount: booking.total.to_i * 100,
                     currency: 'usd',
                     product_data: {
-                      name: booking.listing.title,
-                      images: [url_for(booking.listing.photos.first)],
+                      name: booking.listing.title
+                      # images: [url_for(booking.listing.photos.first)],
+                      # images: ['https://i.imgur.com/EHyR2nP.png'],
                     },
                   },
                   quantity: 1,

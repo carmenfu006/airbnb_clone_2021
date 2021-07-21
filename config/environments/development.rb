@@ -75,5 +75,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # Example to use ngrok to get callbacks from Stripe
-  # config.hosts << "1051b5d7c3b5.ngrok.io"
+  config.hosts << "3ce1e1bed8d1.ngrok.io"
 end
