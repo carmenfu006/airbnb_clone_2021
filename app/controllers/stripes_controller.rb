@@ -12,7 +12,8 @@ class StripesController < UsersController
                 payment_method_types: ['card'],
                 line_items: [{
                   price_data: {
-                    unit_amount: booking.total.to_i * 100,
+                    # because Stripe only wants integer so you will need to change it to integer
+                    unit_amount: (booking.total.to_f * 100).to_i,
                     currency: 'usd',
                     product_data: {
                       name: booking.listing.title
